@@ -20,13 +20,14 @@ class Shop:
         return products
 
     def add(self, *products):
-        for i in products:
-            if (i.name in self.get_products()) and (str(i.weight) in self.get_products()):
-                print(f'Продукт {i.name} уже есть в магазине')
+        list_prod = self.get_products()
+        file = open(self.__file_name, 'a')
+        for product in products:
+            if str(product) in list_prod:
+                print(f'Продукт {product} уже есть в магазине')
             else:
-                file = open(self.__file_name, 'a')
-                file.write(f'{i}\n')
-                file.close()
+                file.write(f'{product}\n')
+        file.close()
 
 
 s1 = Shop()
